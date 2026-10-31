@@ -98,3 +98,63 @@ gehören) und `/root/gen` löschen; das installierte Spiel braucht nur Bibliothe
   (fehlender Text in den deutschen Sprachdateien).
 - Kein Controller: Generals braucht eine Maus.
 - Ton über HDMI ist noch nicht geprüft.
+
+## Lizenz
+
+Die Skripte und Patches in diesem Repo stehen unter der [GNU GPL 3.0](LICENSE).
+
+Die Patches verändern den Quellcode von *Command & Conquer Generals* und *Zero Hour*, den Electronic Arts unter der
+GPL 3.0 **mit zusätzlichen Bedingungen nach Abschnitt 7** veröffentlicht hat (siehe `LICENSE.md` im
+[Fork](https://github.com/bobtista/GeneralsGameCode/blob/8c03683467d4be389fe633214f4894332a562a57/LICENSE.md)).
+Sie gelten auch für dieses Projekt. Kurz zusammengefasst:
+
+- Es werden keine Marken- oder Namensrechte eingeräumt, insbesondere nicht an „Command & Conquer“ oder anderen
+  Marken von Electronic Arts. Dieses Projekt steht in keiner Verbindung zu Electronic Arts.
+- Wer das Programm weitergibt, muss diesen Hinweis und die Bedingungen mitgeben.
+- Veränderte Fassungen müssen als solche gekennzeichnet sein und dürfen nicht als das Originalprogramm
+  ausgegeben werden – dies ist eine veränderte Fassung (Fork mit Patches für ARM64 und OpenGL).
+- Wer bei der Weitergabe vertraglich eine Haftung übernimmt, stellt Electronic Arts davon frei.
+- Ergänzender Gewährleistungsausschluss: Das Programm wird ohne jede Gewährleistung bereitgestellt.
+
+Verbindlich ist der englische Originaltext:
+
+> **ADDITIONAL TERMS per GNU GPL Section 7**
+>
+> No trademark or publicity rights are granted. This license does NOT give you
+> any right, title or interest in "Command & Conquer" or any other Electronic Arts
+> trademark. You may not distribute any modification of this program using any
+> Electronic Arts trademark or claim any affiliation or association with
+> Electronic Arts Inc. or its affiliates or their employees.
+>
+> Any propagation or conveyance of this program must include this copyright
+> notice and these terms.
+>
+> If you convey this program (or any modifications of it) and assume
+> contractual liability for the program to recipients of it, you agree to
+> indemnify Electronic Arts for any liability that those contractual
+> assumptions impose on Electronic Arts.
+>
+> You may not misrepresent the origins of this program; modified versions of
+> the program must be marked as such and not identified as the original program.
+>
+> This disclaimer supplements the one included in the General Public License.
+> TO THE FULLEST EXTENT PERMISSIBLE UNDER APPLICABLE LAW, THIS PROGRAM IS
+> PROVIDED TO YOU "AS IS," WITH ALL FAULTS, WITHOUT WARRANTY OF ANY KIND, AND
+> YOUR USE IS AT YOUR SOLE RISK. THE ENTIRE RISK OF SATISFACTORY QUALITY AND
+> PERFORMANCE RESIDES WITH YOU. ELECTRONIC ARTS DISCLAIMS ANY AND ALL EXPRESS,
+> IMPLIED OR STATUTORY WARRANTIES, INCLUDING IMPLIED WARRANTIES OF
+> MERCHANTABILITY, SATISFACTORY QUALITY, FITNESS FOR A PARTICULAR PURPOSE,
+> NONINFRINGEMENT OF THIRD PARTY RIGHTS, AND WARRANTIES (IF ANY) ARISING FROM A
+> COURSE OF DEALING, USAGE, OR TRADE PRACTICE. ELECTRONIC ARTS DOES NOT WARRANT
+> AGAINST INTERFERENCE WITH YOUR ENJOYMENT OF THE PROGRAM; THAT THE PROGRAM WILL
+> MEET YOUR REQUIREMENTS; THAT OPERATION OF THE PROGRAM WILL BE UNINTERRUPTED OR
+> ERROR-FREE, OR THAT THE PROGRAM WILL BE COMPATIBLE WITH THIRD PARTY SOFTWARE
+> OR THAT ANY ERRORS IN THE PROGRAM WILL BE CORRECTED. NO ORAL OR WRITTEN ADVICE
+> PROVIDED BY ELECTRONIC ARTS OR ANY AUTHORIZED REPRESENTATIVE SHALL CREATE A
+> WARRANTY. SOME JURISDICTIONS DO NOT ALLOW THE EXCLUSION OF OR LIMITATIONS ON
+> IMPLIED WARRANTIES OR THE LIMITATIONS ON THE APPLICABLE STATUTORY RIGHTS OF A
+> CONSUMER, SO SOME OR ALL OF THE ABOVE EXCLUSIONS AND LIMITATIONS MAY NOT APPLY
+> TO YOU.
+
+Die Spieldaten von Generals und Zero Hour sind nicht Teil dieses Projekts und nicht freigegeben; man braucht eine
+eigene, gekaufte Kopie.
