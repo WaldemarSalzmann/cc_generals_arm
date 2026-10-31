@@ -1,0 +1,12 @@
+diff --git a/Dependencies/Utility/Utility/stringex.h b/Dependencies/Utility/Utility/stringex.h
+index 96bf3da..7fc60b8 100644
+--- a/Dependencies/Utility/Utility/stringex.h
++++ b/Dependencies/Utility/Utility/stringex.h
+@@ -20,6 +20,7 @@
+ 
+ #include <string.h>
+ #include <ctype.h>
++#include <wchar.h>
+ #include <wctype.h>
+ 
+ 

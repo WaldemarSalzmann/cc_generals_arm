@@ -1,0 +1,24 @@
+#!/bin/bash
+# Start C&C Generals Zero Hour (GeneralsGameCode, bgfx on OpenGL) full screen on the kiosk display.
+# The kiosk is stopped while the game runs and comes back when the game quits or is stopped.
+# Run it from SSH or a console (Ctrl+Alt+F2, log in as root): generals-zh [extra game options]
+set -e
+if [ -z "$GENERALS_DETACHED" ]; then
+  # Detach from the calling shell, so closing SSH does not end the game ("systemctl stop generals-zh" ends it).
+  # The kiosk comes back via ExecStopPost, which systemd runs however the unit ends.
+  exec systemd-run --quiet --collect --unit=generals-zh --property=TimeoutStopSec=5 \
+    --property=ExecStopPost="/usr/bin/systemctl --no-block start getty@tty1" \
+    --setenv=GENERALS_DETACHED=1 --setenv=HOME=/root "$0" "$@"
+fi
+systemctl stop getty@tty1                 # ends the Chromium kiosk running in the tty1 autologin session
+for _ in $(seq 50); do pgrep -x Xorg >/dev/null || break; sleep 0.2; done
+if pgrep -x Xorg >/dev/null; then echo "X server of the kiosk is still running" >&2; exit 1; fi
+rm -f /tmp/.X0-lock /tmp/.X11-unix/X0
+# Retail .big archives stay in their own folders; Zero Hour's archives take precedence over Generals'.
+export CNC_ZH_INSTALLPATH=/opt/cnc-gamedata/zerohour
+export CNC_GENERALS_INSTALLPATH=/opt/cnc-gamedata/generals
+# Mali-G52 has no usable Vulkan driver: render through bgfx's OpenGL backend (Panfrost GL 3.1)
+export GGC_BGFX_RENDERER=gl
+export SDL_VIDEO_DRIVER=x11
+cd /opt/generalszh
+xinit /usr/local/lib/generals-zh-session "$@" -- :0 vt1 -nolisten tcp 2>&1 | tee /tmp/generals-zh.log

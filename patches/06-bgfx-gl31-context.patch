@@ -1,0 +1,16 @@
+diff --git a/cmake/bgfx.cmake b/cmake/bgfx.cmake
+index 4a4b01c..3a21355 100644
+--- a/cmake/bgfx.cmake
++++ b/cmake/bgfx.cmake
+@@ -20,6 +20,11 @@ set(BGFX_BUILD_TOOLS_GEOMETRY OFF CACHE BOOL "" FORCE)
+ set(BGFX_BUILD_TOOLS_TEXTURE  OFF CACHE BOOL "" FORCE)
+ set(BGFX_INSTALL              OFF CACHE BOOL "" FORCE)
+ set(BGFX_CUSTOM_TARGETS       OFF CACHE BOOL "" FORCE)
++if(GGC_BGFX_RENDERER STREQUAL "gl")
++    # Request an OpenGL 3.1 context and run the GLSL 1.40 shaders as compiled. bgfx's default
++    # (2.1) rewrites them to GLSL 1.20/1.30 with ARB extension names, which Mesa rejects.
++    set(BGFX_OPENGL_VERSION 31 CACHE STRING "" FORCE)
++endif()
+ 
+ FetchContent_Declare(
+     bgfx_cmake

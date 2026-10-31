@@ -1,0 +1,6 @@
+#!/bin/sh
+# X session for generals-zh: lower the HDMI mode first (the game always uses the full screen size and the
+# Mali-G52 is fill-rate bound), then run the game. The kiosk's own X server starts at full resolution again.
+out=$(xrandr | awk '/ connected/ {print $1; exit}')
+[ -n "$out" ] && xrandr --output "$out" --mode "${GENERALS_MODE:-1280x720}" 2>/dev/null
+exec /opt/generalszh/run.sh "$@"

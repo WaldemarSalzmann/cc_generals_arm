@@ -1,0 +1,3 @@
+# prebuilt game (GPL binary, ~100 MB) – built on the device, see README
+dist/
+*.log

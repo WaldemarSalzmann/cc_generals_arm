@@ -1,0 +1,13 @@
+diff --git a/Core/Libraries/Source/WWVegas/WW3D2/prim_anim.h b/Core/Libraries/Source/WWVegas/WW3D2/prim_anim.h
+index 6461f28..7b2f9d8 100644
+--- a/Core/Libraries/Source/WWVegas/WW3D2/prim_anim.h
++++ b/Core/Libraries/Source/WWVegas/WW3D2/prim_anim.h
+@@ -82,7 +82,7 @@ public:
+ 		const T &	Get_Value () const		{ return m_Value; }
+ 		T &			Get_Value ()				{ return m_Value; }
+ 
+-		float			Set_Time (float time)		{ m_Time = time; }
++		float			Set_Time (float time)		{ m_Time = time; return m_Time; }
+ 		void			Set_Value (const T &value)	{ m_Value = value; }
+ 
+ 	private:

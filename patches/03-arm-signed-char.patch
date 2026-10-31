@@ -1,0 +1,17 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 017fc38..d558a68 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -110,6 +110,12 @@ if(RTS_BUILD_OPTION_BENCHMARKS)
+     include(cmake/googlebenchmark.cmake)
+ endif()
+ 
++# The game code was written for x86, where plain char is signed. ARM defaults to unsigned char,
++# so keep x86 semantics for the game sources (the fetched third-party libraries above are unaffected).
++if(CMAKE_SYSTEM_PROCESSOR MATCHES "^(aarch64|arm64|arm)" AND (CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang"))
++    add_compile_options(-fsigned-char)
++endif()
++
+ add_subdirectory(Dependencies)
+ 
+ add_subdirectory(resources)

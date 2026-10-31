@@ -1,0 +1,49 @@
+diff --git a/Core/Libraries/Source/WWVegas/WW3D2/Backend/BgfxBackend.cpp b/Core/Libraries/Source/WWVegas/WW3D2/Backend/BgfxBackend.cpp
+index 1b21078..ac5c7b9 100644
+--- a/Core/Libraries/Source/WWVegas/WW3D2/Backend/BgfxBackend.cpp
++++ b/Core/Libraries/Source/WWVegas/WW3D2/Backend/BgfxBackend.cpp
+@@ -1401,6 +1401,33 @@ static void UpdateShadowStencilState()
+     g_draw.shadowStencilBack = BGFX_STENCIL_NONE;
+ }
+ 
++#if defined(GGC_BGFX_RENDERER_GL)
++// shaderc's GLSL optimizer emits "textureGradARB" for texture2DGrad in GLSL 1.40 output, a name no
++// GL driver knows. Rename it to the core "textureGrad", padded to the same length so the shader
++// binary's size fields stay valid.
++static const bgfx::Memory * MakeShaderMemory(const uint8_t * data, uint32_t size)
++{
++    const bgfx::Memory * mem = bgfx::copy(data, size);
++    static const char kFrom[] = "textureGradARB";
++    static const char kTo[]   = "textureGrad   ";
++    const uint32_t len = sizeof(kFrom) - 1;
++    for (uint32_t i = 0; i + len <= mem->size; ++i)
++    {
++        if (std::memcmp(mem->data + i, kFrom, len) == 0)
++        {
++            std::memcpy(mem->data + i, kTo, len);
++            i += len - 1;
++        }
++    }
++    return mem;
++}
++#else
++static const bgfx::Memory * MakeShaderMemory(const uint8_t * data, uint32_t size)
++{
++    return bgfx::makeRef(data, size);
++}
++#endif
++
+ // TheSuperHackers @refactor bobtista 26/04/2026 Shader program creation
+ // helper. Creates a bgfx program from compiled bytecode, sets debug names,
+ // and cleans up on failure.
+@@ -1408,8 +1435,8 @@ bgfx::ProgramHandle CreateShaderProgram(
+     const uint8_t * vsData, uint32_t vsSize, const char * vsName,
+     const uint8_t * fsData, uint32_t fsSize, const char * fsName)
+ {
+-    bgfx::ShaderHandle vs = bgfx::createShader(bgfx::makeRef(vsData, vsSize));
+-    bgfx::ShaderHandle fs = bgfx::createShader(bgfx::makeRef(fsData, fsSize));
++    bgfx::ShaderHandle vs = bgfx::createShader(MakeShaderMemory(vsData, vsSize));
++    bgfx::ShaderHandle fs = bgfx::createShader(MakeShaderMemory(fsData, fsSize));
+     if (bgfx::isValid(vs) && bgfx::isValid(fs))
+     {
+         bgfx::setName(vs, vsName);
