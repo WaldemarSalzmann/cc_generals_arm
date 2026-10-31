@@ -1,4 +1,6 @@
-# C&C Generals – Die Stunde Null auf dem ODROID-N2+
+# GeneralsGameCode für ARM64 und OpenGL – ODROID-N2+
+
+Inoffizielle, veränderte Fassung des Community-Projekts GeneralsGameCode; keine Verbindung zu Electronic Arts.
 
 *Command & Conquer Generals Zero Hour* läuft nativ auf den ODROID-N2+-Kiosks (DietPi, Debian 13, arm64) –
 auf Deutsch, mit OpenGL auf der Mali-G52-GPU. Ein Gefecht läuft mit **24–25 fps bei 1280×720**
