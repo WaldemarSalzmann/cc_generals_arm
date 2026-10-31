@@ -1,4 +1,4 @@
-# Generals Zero Hour auf dem ODROID-N2+ – Vorgehen und Erkenntnisse
+# GeneralsGameCode für ARM64 und OpenGL – Vorgehen und Erkenntnisse
 
 Bericht über die Portierung von *Command & Conquer Generals – Die Stunde Null* auf einen ODROID-N2+
 (Oktober 2026). Ziel war, das Spiel auf vier Kiosk-Geräten nativ laufen zu lassen, ohne Windows-Emulation.
